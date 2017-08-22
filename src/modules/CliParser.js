@@ -22,6 +22,7 @@ class CliParser {
         const message = "Missing required option '-" + flag + "'.";
         console.log(message);
         this.printUsage();
+        process.exit(-1);
       } else {
         options[this.commandsNames[flag]] = argv[flag];
       }
