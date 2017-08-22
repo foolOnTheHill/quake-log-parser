@@ -16,7 +16,7 @@ class BuilderAux {
     for (i; line[i] != Consts.KILLED; i++) {
       killer += ' ' + line[i];
     }
-    
+
     let victim = line[i+1];
     i += 2;
     for (i; line[i] != Consts.BY; i++) {
