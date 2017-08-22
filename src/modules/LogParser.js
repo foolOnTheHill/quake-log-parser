@@ -1,16 +1,23 @@
 import Fs from 'fs';
+import Consts from './Consts.js';
 
 class LogParser {
 
   _parseLines(lines) {
-    const parsedLines = lines.map(l => l.split(' ').filter(word => word != ''));
+    let parsedLines = lines.map(l => l.split(' ').filter(word => word != ''));
+    parsedLines = parsedLines.filter(words => words[1] === Consts.KILL || words[1] === Consts.GAME_START || words[1] === Consts.GAME_END);
     return parsedLines;
   }
 
   getLogs(filename) {
-    const file = Fs.readFileSync(filename, 'utf8').split('\n');
-    const logs = this._parseLines(file);
-    return logs;
+    try {
+      const file = Fs.readFileSync(filename, 'utf8').split('\n');
+      const logs = this._parseLines(file);
+      return logs;
+    } catch(err) {
+      console.log(err.message);
+      process.exit(-1);
+    }
   }
 }
 
