@@ -1,0 +1,24 @@
+{
+  "name": "quake-log-parser",
+  "version": "1.0.0",
+  "description": "Parses log files from Quake games",
+  "main": "main.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/foolOnTheHill/quake-log-parser.git"
+  },
+  "keywords": [
+    "quake",
+    "log",
+    "parser"
+  ],
+  "author": "George Oliveira",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/foolOnTheHill/quake-log-parser/issues"
+  },
+  "homepage": "https://github.com/foolOnTheHill/quake-log-parser#readme"
+}
