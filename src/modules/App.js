@@ -11,11 +11,13 @@ class App {
     const commands = [
       {
         flag: 'l',
-        name: 'logfile'
+        name: 'logfile',
+        type: 'string'
       },
       {
         flag: 'c',
-        name: 'command'
+        name: 'command',
+        type: 'string'
       }
     ];
     this.commandsParser = new CliParser(usage, commands);
