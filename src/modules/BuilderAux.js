@@ -1,6 +1,7 @@
 import Consts from './Consts.js';
 
 class BuilderAux {
+  // Contains auxiliary functions used by the builders
 
   add_key(object, key) {
     if (!(key in object)) {
@@ -10,16 +11,17 @@ class BuilderAux {
   }
 
   getPlayerNames(line) {
+    // Since players can have spaces in their names, we need to iterate trough the line until we find some well defined tokens.
     let killer = line[5];
 
     let i = 6;
-    for (i; line[i] != Consts.KILLED; i++) {
+    for (i; line[i] != Consts.KILLED; i++) { // Iterate until find 'killed' token
       killer += ' ' + line[i];
     }
 
     let victim = line[i+1];
     i += 2;
-    for (i; line[i] != Consts.BY; i++) {
+    for (i; line[i] != Consts.BY; i++) { // Iterate until find 'by' token
       victim += ' ' + line[i];
     }
 
@@ -37,9 +39,9 @@ class BuilderAux {
 
       summary = this.add_key(summary, victim);
 
-      if (killer === Consts.WORLD) {
-        summary[victim] = Math.max(0, summary[victim]-1);
-      } else if (killer !== victim) {
+      if (killer === Consts.WORLD) { // <world> is not a player and should not appear in the players list
+        summary[victim] = Math.max(0, summary[victim]-1); // the player loses 1 kill every time <world> kills him
+      } else if (killer !== victim) { // suicide does not count as a kill
         summary = this.add_key(summary, killer);
         summary[killer] += 1;
       }

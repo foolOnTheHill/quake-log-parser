@@ -5,6 +5,7 @@ class LogParser {
 
   _parseLines(lines) {
     let parsedLines = lines.map(l => l.split(' ').filter(word => word != ''));
+    // Only keeps the lines representing game start, end and kill events
     parsedLines = parsedLines.filter(words => words[1] === Consts.KILL || words[1] === Consts.GAME_START || words[1] === Consts.GAME_END);
     return parsedLines;
   }

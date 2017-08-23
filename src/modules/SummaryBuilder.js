@@ -17,14 +17,14 @@ class SummaryBuilder extends Builder {
     let allSummaries = {};
 
     while (index < this.logs.length) {
-
       let line = this.logs[index];
+
       if (line[1] == Consts.GAME_START) {
         index += 1;
 
         let auxReturn;
         if (this.keepSummary) {
-          auxReturn = this.aux.build(this.logs, index, matchSummary);
+          auxReturn = this.aux.build(this.logs, index, matchSummary); // Keeps the hash, since we need to consider all game matches
         } else {
           auxReturn = this.aux.build(this.logs, index, {});
         }
@@ -39,6 +39,7 @@ class SummaryBuilder extends Builder {
           kills: matchSummary
         };
 
+        // Creates a new entry for the current match
         if (!this.keepSummary) {
           allSummaries[gameMatch] = fullSummary;
         }
@@ -49,6 +50,7 @@ class SummaryBuilder extends Builder {
 
     allSummaries.matches = gameMatch;
 
+    // Creates only one entry considering all mathes
     if(this.keepSummary) {
       allSummaries['all'] = {
         players: Object.keys(matchSummary),

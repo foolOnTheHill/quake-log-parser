@@ -1,5 +1,6 @@
 
 class PrettyPrinter {
+  // Prints the results to stdout using the format described in the documentation.
 
   printSummary(summary) {
     for (let i = 1; i < summary.matches; i++) {

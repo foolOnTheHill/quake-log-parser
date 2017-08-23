@@ -1,3 +1,4 @@
+// Tokens that are used by the tool
 
 const Consts = {
   SUMMARY: 'summary',

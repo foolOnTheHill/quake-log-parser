@@ -7,6 +7,7 @@ class CliParser {
     this.commandsNames = {};
     this.commandsTypes = {};
 
+    // Organizes the options into hases to make them easy to check later
     for (let i = 0; i < commandsOptions.length; i++) {
       const name = commandsOptions[i].name;
       const flag = commandsOptions[i].flag;
@@ -27,10 +28,10 @@ class CliParser {
     let options = {};
 
     for (let flag in this.commandsNames) {
-      if (!argv[flag]) {
+      if (!argv[flag]) { // Checks required options
         const message = "Missing required option '-" + flag + "'.";
         this._error(message);
-      } else if (typeof argv[flag] != this.commandsTypes[flag]) {
+      } else if (typeof argv[flag] != this.commandsTypes[flag]) { // Checks for options types
         const message = "Wrong type for option '-" + flag + "'. It must be a '" + this.commandsTypes[flag] + "'.";
         this._error(message);
       } else {

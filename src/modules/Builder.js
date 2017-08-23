@@ -10,6 +10,7 @@ class Builder {
   }
 
   build() {
+    // Abstract method that must be implemented by the child classes.
     throw new Error('Implementation of "build" is required!');
   }
 

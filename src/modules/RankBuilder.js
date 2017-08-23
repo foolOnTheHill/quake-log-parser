@@ -9,8 +9,8 @@ class RankBuilder extends Builder {
   }
 
   build() {
-    const summary = this.summaryBuilder.build().all;
-    let players = summary.players.sort((playerA, playerB) => summary.kills[playerA] - summary.kills[playerB]).reverse();
+    const summary = this.summaryBuilder.build().all; // Builds a summary considering all matches
+    let players = summary.players.sort((playerA, playerB) => summary.kills[playerA] - summary.kills[playerB]).reverse(); // Sorts players by number of kills
     let rank = {
       players: players,
       kills: summary.kills,
