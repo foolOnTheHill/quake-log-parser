@@ -12,7 +12,7 @@ class LogParser {
 
   getLogs(filename) {
     try {
-      const file = Fs.readFileSync(filename, 'utf8').split('\n');
+      const file = Fs.readFileSync(filename, 'utf8').split('\n'); // Since it's a command line tool, it's not a big deal to read the file synchronously
       const logs = this._parseLines(file);
       return logs;
     } catch(err) {

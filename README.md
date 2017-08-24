@@ -1,6 +1,6 @@
 # quake-log-parser
 
-A command line tool to read Quake 3 log files and generates reports.
+A command line tool that reads Quake 3 log files and generates reports.
 
 Requirements
 ------------
