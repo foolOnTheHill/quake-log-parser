@@ -3,6 +3,7 @@ import SummaryBuilder from './SummaryBuilder.js';
 import RankBuilder from './RankBuilder.js';
 import Consts from './Consts.js';
 import PrettyPrinter from './PrettyPrinter.js';
+import Template from './Template.js';
 
 class App {
 
@@ -34,10 +35,20 @@ class App {
       const summaryBuilder = new SummaryBuilder(this.options.logfile, false);
       const allSummaries = summaryBuilder.build();
       this.prettyPrinter.printSummary(allSummaries);
-    } else if (this.options.command === Consts.RANK) { // Builds a rank
+    } else if (this.options.command === Consts.RANK || this.options.command === Consts.HTML) {
+       // Builds a rank
       const rankBuilder = new RankBuilder(this.options.logfile);
       const rank = rankBuilder.build();
-      this.prettyPrinter.printRank(rank);
+
+      if (this.options.command === Consts.HTML) {
+        // Creates a html page with a table displaying the rank
+        const template = new Template();
+        const html = template.build(rank);
+        console.log(html); // Prints to stdout
+      } else {
+        this.prettyPrinter.printRank(rank);
+      }
+
     } else { // Shows an error
       console.log('Invalid option! "' + this.options.command + '"');
       this.commandsParser.printUsage();
