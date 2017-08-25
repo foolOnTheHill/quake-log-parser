@@ -28,6 +28,7 @@ quake-log-parser.js -l <logfile> -c <option>
 
 - `logfile`: path to the file with the logs
 - `command`: what you want the tool to do. Options include `summary` or `rank`.
+- `html`: generates HTML containing the rank and outputs it to stdout.
 
 ``summary`` outputs using the following format:
 
@@ -64,3 +65,7 @@ The resulting bundle will be created at `/dist/quake-log-parser.s`.
 `` npm build ``
 
 The resulting files will be created at `/build` folder.
+
+- You can run tests on each module by creating a build and then running each file using:
+
+`` node <module_to_test>``
